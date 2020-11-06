@@ -1,41 +1,14 @@
-import os
-import sys
+import os # If you want to run the program on the main Mac terminal
+import sys # Same
 import time
-import json
 import spotipy
-import webbrowser
 import Lyrics_Player
 import spotipy.util as util
-import Spotify_keys
-from json.decoder import JSONDecodeError
+from json.decoder import JSONDecodeError # Convenient to read Spotify's object returns
 
-"""
-The program started as a solution to the absence of good lyrics on Spotify's app/web (at the time of writing this 
-program there was no adequate lyrics on Spotify's app/web). 
 
-How to run the program:
 
-1. The first phase would be to create an "APP" on Spotify's Developers website:
- (https://developer.spotify.com/dashboard/applications)
-
-2. After creating the 'APP' go to EDIT SETTINGS and paste whatever link into the Redirect URI section.
- I've used https://www.google.com/
-
-3. Open the terminal and run the following three lines:
-    export SPOTIPY_CLIENT_ID=''  'Your_Client_ID' (obtained from the APP's page on Spotify's Dashboard)
-    export SPOTIPY_CLIENT_SECRET=''         'Your_SECRET_Client_ID' (obtained from the APP's page on Spotify's Dashboard)
-    export SPOTIPY_REDIRECT_URI='https://www.google.com/'    'Whatever link you chose to the redirect URI.
-
-4. Write the 'Installation code' below and save the file.
-
-5. Remember to change directory (cd) to the python file's directory
-
-6. Run the program in your terminal in the following way: python3 'Your file name'.py 'Your Spotify user name'
-
-7. Your browser will open. Click OK and copy the URl to the terminal and run it.
-"""
-
-# Running from the Terminal:
+# Uncomment if you want to run the program from the Mac terminal:
 # username = sys.argv[1]
 # scope = 'user-read-private user-read-playback-state user-modify-playback-state playlist-read-private ' \
 #         'playlist-read-collaborative user-top-read user-read-recently-played'
@@ -43,13 +16,14 @@ How to run the program:
 # try:
 #     token = util.prompt_for_user_token(username,
 #                                        scope,
-#                                        client_id=Spotify_keys.client_id(),
-#                                        client_secret=Spotify_keys.client_secret(),
+#                                        client_id="Your spotify's client id",
+#                                        client_secret="Your spotify's secret client id",
 #                                        redirect_uri='https://www.google.com/')
 # except:
 #     # os.remove(f".cache-{username}")
 #     token = util.prompt_for_user_token(username, scope)
 
+# Comment if running the program from Mac terminal:
 username = 'itamarfayler'
 #
 # the specific permissions requests:
@@ -57,8 +31,8 @@ scope = 'user-read-private user-read-playback-state user-modify-playback-state p
         'playlist-read-collaborative user-top-read user-read-recently-played'
 token = util.prompt_for_user_token(username,
                                    scope,
-                                   client_id= Spotify_keys.client_id(),
-                                   client_secret= Spotify_keys.client_secret(),
+                                   client_id= "Your spotify's client id",
+                                   client_secret= "Your sporify's secret client id",
                                    redirect_uri='https://www.google.com/')
 
 # Create the Spotify object (this The object we are going to work with for everything in thr library):
@@ -97,15 +71,6 @@ def play(song_uri=None, artist_name=None, song_name=None, list_of_songs_uri=None
         print('Your Spotify app is not open. Open it and try again')
         print()
     else:
-        # # In a case were the function play is used by outside program the inputs only artist and song names
-        # if song_uri is None and list_of_songs_uri is None:
-        #     artist_results = spotify_object.search(q='artist:' + artist_name, type='artist')
-        #     print(artist_results)
-        #     song_results = spotify_object.search(q='track:' + song_name, type='track')
-        #     print(song_results)
-        #     return results
-        # spotify_object.start_playback(device_id=device_ID, uris=list_of_songs_uri)
-        # else:
         if song_uri is not None:  # I.E. it is a specific song and not a list of songs
             # if song_num_input is not None:
             play_track_URI_lst = list([])  # For some reason, in order to play a song you can't the string of the URI.
