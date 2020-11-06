@@ -24,7 +24,7 @@ from json.decoder import JSONDecodeError # Convenient to read Spotify's object r
 #     token = util.prompt_for_user_token(username, scope)
 
 # Comment if running the program from Mac terminal:
-username = 'itamarfayler'
+username = 'your spotify user name'
 #
 # the specific permissions requests:
 scope = 'user-read-private user-read-playback-state user-modify-playback-state playlist-read-private ' \
