@@ -3,7 +3,7 @@ A solution to Spotify's lack of Lyrics for its tracks.
 
 
 """
-The program started as a solution to the absence of good lyrics on Spotify's app/web (at the time of writing this 
+A solution to the absence of good lyrics on Spotify's app/web (at the time of writing this 
 program there was no adequate lyrics support on Spotify's app/web). 
 
 How to run the program:
